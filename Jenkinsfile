@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('src from github') {
             steps {
-                git branch: 'master', url: 'https://github.com/Madhan-D249/instagram.git'
+                git branch: 'master', url: 'https://github.com/Madhan-D249/Instagram.git'
             }
         }
         stage('build') {
