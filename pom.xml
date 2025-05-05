@@ -6,7 +6,7 @@
 
   <groupId>Instagram</groupId>
   <artifactId>Insta</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
   <packaging>war</packaging>
 
   <name>Insta Maven Webapp</name>
