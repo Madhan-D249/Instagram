@@ -1,31 +1,34 @@
-pipeline{
+pipeline {
     agent any
-    tools{
+    tools {
         maven 'maven'
     }
-    stages{
-        stage('src from github')
-        {
-            steps{
-                git branch : 'master',url :'https://github.com/Madhan-D249/Instagram.git'
+    stages {
+        stage('src from github') {
+            steps {
+                git branch: 'master', url: 'https://github.com/Madhan-D249/instagram.git'
             }
         }
-        stage('build')
-        {
-            steps{
+        stage('build') {
+            steps {
                 sh 'mvn clean deploy -s Settings.xml'
             }
         }
     }
-    post{
-        always{
+    post {
+        always {
             echo "always"
         }
-        success{
+        success {
             echo "build success"
         }
-        failure{
+        failure {
             echo "build failed"
+            script {
+                currentBuild.result = 'FAILURE'
+                error("Deployment failed. Check Nexus server availability and settings.")
+            }
         }
     }
 }
+
